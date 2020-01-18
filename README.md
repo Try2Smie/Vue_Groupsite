@@ -34,5 +34,9 @@
   ```
 
 - 运行groupsitedb.sql 生成数据库`groupback`的表和数据
+
 - `cd groupback` 通过 `npm start` 运行 nodejs
-- `cd groupsite`  通过 `npm run serve` 运行vuejs，浏览器通过http://localshot:8080来查看项目。
+
+- `cd groupsite`  通过 `npm run serve` 运行vuejs
+
+- 浏览器查看项目 http://localshot:8080 
