@@ -58,12 +58,14 @@ groupsite中`npm run build` 生成的前端静态文件已经放置到groupback�
 ##### 账号相关——登录/注册/退出登录/关于我
 
 - login
+  
   ![image-20200120144118157.png](https://i.loli.net/2020/01/20/kF5mGKVvdXS3H86.png)
 - register
   ![image-20200120144603500.png](https://i.loli.net/2020/01/20/vwjBXh7zYROWCrd.png)
 - 关于我 （需要先登录）
   ![image-20200120151309976.png](https://i.loli.net/2020/01/20/WOzn2crDwTeg4JK.png)
 - logout （需要先登录）
+  
   - 点击即退出登录
 
 
@@ -110,7 +112,6 @@ groupsite中`npm run build` 生成的前端静态文件已经放置到groupback�
 
 - 显示所有分组情况
 - 点击“下载”根据后端数据库会在电脑桌面生成分组情况的excel表格 “分组名单.xlsx”
-
-![image-20200120150012290.png](https://i.loli.net/2020/01/20/MEPByq9wvzlbcuC.png)
+  ![image-20200120150012290.png](https://i.loli.net/2020/01/20/MEPByq9wvzlbcuC.png)
 
 
