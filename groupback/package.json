@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "supervisor ./bin/www"
+    "start": "pm2 start ./bin/www --watch",
+    "stop": "pm2 stop all"    
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

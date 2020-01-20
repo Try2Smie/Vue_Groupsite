@@ -38,11 +38,11 @@ app.use(session({
   // cookie: { secure: true }
 }))
 
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);  // 用户信息
-app.use('/project', projectRouter); // 项目相关
-app.use('/member', memberRouter); // 个人中心
+// 添加统一接口前缀/apis  使得与前端proxy代理一致
+app.use('/apis/', indexRouter);
+app.use('/apis/users', usersRouter);  // 用户信息
+app.use('/apis/project', projectRouter); // 项目相关
+app.use('/apis/member', memberRouter); // 个人中心
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
