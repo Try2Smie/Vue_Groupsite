@@ -114,7 +114,7 @@
 
 - `cd groupsite`  通过 `npm run serve` 运行vuejs
 
-- 浏览器查看项目 http://localshot:8080 
+- 浏览器查看项目 http://localhost:8080 
 
 - 可用账户
 
