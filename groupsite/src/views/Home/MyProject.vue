@@ -154,8 +154,8 @@ export default {
 						// console.log(res.data)
 						this.memberData = res.data.group_members
 						this.leader = res.data.leader
-						this.isdirector = (res.data.director.user_id === this.$store.state.user_id)
-						this.isleader = (res.data.leader.user_id === this.$store.state.user_id)
+						this.isdirector = (res.data.director.user_id == this.$store.state.user_id)
+						this.isleader = (res.data.leader.user_id == this.$store.state.user_id)
 						// console.log("负责人：", this.isdirector)
 						// console.log("组长：", this.isleader)
 					})

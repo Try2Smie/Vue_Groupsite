@@ -65,7 +65,7 @@ export default {
   created () {
     // 查看是否登录，获取登录用户名&参与的项目id
     this.$axios.get('/apis/users/getloginstatus').then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       if (res.data.status === 200) {
         // 将数据存入状态state，并存入local storage，之后取出状态时不会
         this.$store.commit(LOGIN_STATUS, true)
@@ -73,6 +73,12 @@ export default {
         this.$store.commit(USERNAME, res.data.username) // 用户名 
         this.$store.commit(USER_ID, res.data.user_id) // 用户ID
         this.$store.commit(MY_PROJECT_ID, res.data.my_project_id) // 参与的项目id      
+
+        // console.log(this.$store.state.isLogin)
+        // console.log(this.$store.state.username)
+        // console.log(this.$store.state.user_id)
+        // console.log(this.$store.state.my_project_id)
+
       } else {
         this.$notify.error({
           title: '登录提醒',

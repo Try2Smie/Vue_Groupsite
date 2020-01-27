@@ -5,6 +5,10 @@ var router = express.Router();
 var mysql = require('mysql');
 var query = require('../db/index');
 
+// 使用md5+随机盐加密，以用户id做种子
+var crypto = require('crypto');
+
+
 /* GET users listing. */
 /* get请求显示user表数据 */
 router.get('/', async(req, res) => {
@@ -22,9 +26,11 @@ router.get('/', async(req, res) => {
 /* 用户注册 */
 router.post('/register', async(req, res) => {
   	// console.log(req.body)
-	let sql = 'INSERT INTO user (user_id, user_name, password, email) VALUES(?, ?, ?, ?)'
-	let inserts = [req.body.user_id, req.body.user_name, req.body.password, req.body.email]
+	let sql = `INSERT INTO user (user_id, user_name, password, email) VALUES(?, ?, ?, ?)`
+	let md5= crypto.createHash('md5');
+	let inserts = [req.body.user_id, req.body.user_name, md5.update(req.body.password+':'+req.body.user_id.slice(2,5)).digest('hex'), req.body.email]
 	sql = mysql.format(sql, inserts)
+	// console.log(sql)
 
 	query(sql, (err, results) => {
 		// console.log(results)
@@ -53,8 +59,10 @@ router.post('/login', async (req, res) => {
 
 	if (Object.keys(req.query).length === 0) { /* 接口没有查询数据时，做用户登录 */
 		let sql = 'SELECT * FROM user WHERE user_id=? AND password=?'
-		let inserts = [req.body.user_id, req.body.password]
+		let md5= crypto.createHash('md5');
+		let inserts = [req.body.user_id, md5.update(req.body.password+':'+req.body.user_id.slice(2,5)).digest('hex')]
 		sql = mysql.format(sql, inserts)
+		// console.log(sql)
 	
 		query(sql, (err, results) => {
 			if (results.length === 0) { // 没有找到用户名和密码都匹配的数据

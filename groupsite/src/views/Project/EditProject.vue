@@ -25,7 +25,7 @@
 						<el-button size="mini" type="text" @click="visible = false">取消</el-button>
 						<el-button type="primary" size="mini" @click="submitForm('project')">确定</el-button>
 					</div>
-					<el-button type="primary" slot="reference">立即创建</el-button>
+					<el-button type="primary" slot="reference">保存修改</el-button>
 				</el-popover>				
 				<el-button class="reset" @click="resetForm('project')">清空内容</el-button>
 			</el-form-item>
@@ -106,7 +106,7 @@ export default {
 				// 获取详情
 				// console.log(this.$route.params)
 				this.$axios.get('/apis/project/getprojectbyid/'+this.$route.params.id).then(res => {
-					console.log(res.data)
+					// console.log(res.data)
 					this.project = res.data.project_detail
 					document.title = '修改项目：' + this.project.title // 更换页面标题
 				})

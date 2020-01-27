@@ -115,7 +115,7 @@ export default {
 		this.$axios.get('/apis/users/getloginstatus').then(res => { 
 			
 			// 在登录状态下且已参与有项目时，提示“参与项目限制”  
-			if (this.$store.state.isLogin === true & this.$store.state.my_project_id !== null) {
+			if (this.$store.state.isLogin === true & this.$store.state.my_project_id != null) {
 				this.$alert('您已经有参与的项目了', '参与项目限制', {
 					center: true,
 					confirmButtonText: '确定',

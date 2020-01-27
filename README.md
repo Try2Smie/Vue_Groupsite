@@ -3,43 +3,6 @@
 
 
 
-#### 运行项目操作
-
-- 分别通过`cd groupsite`和`cd groupback`进入这两个文件夹，通过`npm install`安装依赖 
-
-- 修改groupback/db/index.js 中MySQL的配置
-
-  ```mysql
-  const pool = mysql.createPool({
-  	host: 'localhost',
-  	port: '3306',
-  	user: 'root',  // 修改用户名
-  	password: 'root', // 修改密码
-  	database: 'groupsite',
-  	multipleStatements: true  // 允许一个query多条语句
-  })
-  ```
-
-- 运行groupsitedb.sql 生成数据库`groupback`的表和数据
-
-- `cd groupback` 通过 `npm start` 运行 nodejs
-
-- `cd groupsite`  通过 `npm run serve` 运行vuejs
-
-- 浏览器查看项目 http://localshot:8080 
-
-
-
-#### 更新操作
-
-groupsite中`npm run build` 生成的前端静态文件已经放置到groupback中，将项目下载下来查看的时候不需要再给groupsite安装依赖以及运行，直接对groupback运行`npm start`和`npm stop`即可
-
-
-
-----
-
-
-
 #### 设计要求：
 
 1. 要求用户注册登录
@@ -53,6 +16,17 @@ groupsite中`npm run build` 生成的前端静态文件已经放置到groupback�
 
 
 
+#### 使用到的技术
+
+- Vue.js ：element-ui, Vue Router, Vuex
+- axios 异步请求
+- nodejs: express-generator
+- mysql 存储数据
+- session 登录验证
+- crypto 密码加密
+
+
+
 #### 页面和功能描述
 
 ##### 账号相关——登录/注册/退出登录/关于我
@@ -62,6 +36,7 @@ groupsite中`npm run build` 生成的前端静态文件已经放置到groupback�
   ![image-20200120144118157.png](https://i.loli.net/2020/01/20/kF5mGKVvdXS3H86.png)
 - register
   ![image-20200120144603500.png](https://i.loli.net/2020/01/20/vwjBXh7zYROWCrd.png)
+  其中密码使用md5加盐（以用户id为种子）来加密
 - 关于我 （需要先登录）
   ![image-20200120151309976.png](https://i.loli.net/2020/01/20/WOzn2crDwTeg4JK.png)
 - logout （需要先登录）
@@ -114,4 +89,44 @@ groupsite中`npm run build` 生成的前端静态文件已经放置到groupback�
 - 点击“下载”根据后端数据库会在电脑桌面生成分组情况的excel表格 “分组名单.xlsx”
   ![image-20200120150012290.png](https://i.loli.net/2020/01/20/MEPByq9wvzlbcuC.png)
 
+
+
+#### 运行项目操作
+
+- 分别通过`cd groupsite`和`cd groupback`进入这两个文件夹，通过`npm install`安装依赖 
+
+- 修改groupback/db/index.js 中MySQL的配置
+
+  ```mysql
+  const pool = mysql.createPool({
+  	host: 'localhost',
+  	port: '3306',
+  	user: 'root',  // 修改用户名
+  	password: 'root', // 修改密码
+  	database: 'groupsite',
+  	multipleStatements: true  // 允许一个query多条语句
+  })
+  ```
+
+- 运行groupsitedb.sql 生成数据库`groupback`的表和数据
+
+- `cd groupback` 通过 `npm start` 运行 nodejs
+
+- `cd groupsite`  通过 `npm run serve` 运行vuejs
+
+- 浏览器查看项目 http://localshot:8080 
+
+- 可用账户
+
+  ```
+  id: 11111111
+  password: 11111111
+  ```
+  
+
+
+
+##### 更新操作
+
+groupsite中`npm run build` 生成的前端静态文件已经放置到groupback中，将项目下载下来查看的时候不需要再给groupsite安装依赖以及运行，直接对groupback运行`npm start`和`npm stop`即可
 

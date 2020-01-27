@@ -59,8 +59,8 @@ export default {
 			this.$prompt('请输入项目密码', '提示', {
 				confirmButtonText: '确定',
 				cancelButtonText: '取消',
-				inputPattern: /^[0-9a-zA-Z]{6}$/,
-				inputErrorMessage: '项目密码应为6位字符[0-9a-zA-Z]'
+				inputPattern: /^[0-9a-zA-Z]{4,8}$/,
+				inputErrorMessage: '项目密码应为4-8位字符[0-9a-zA-Z]'
 			}).then(({ value }) => {
 				// 输入正确密码则成功加入项目组
 				this.$axios.post('/apis/member/applytoproject/'+this.$route.params.id, {
@@ -93,11 +93,11 @@ export default {
 	},
 
 	created () {
-		if (this.$store.state.isLogin & this.$store.state.my_project_id === null) {
+		if (this.$store.state.isLogin & this.$store.state.my_project_id == null) {
 			this.showBtn = true // 只有已登录+未参与项目才会显示申请按钮
 		}
 
-		if (parseInt(this.$route.params.id) === this.$store.state.my_project_id) {
+		if (this.$route.params.id == this.$store.state.my_project_id) {
 			this.$router.push({path: '/myproject'})
 		} else {
 			// 获取项目信息
